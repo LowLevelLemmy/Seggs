@@ -9,8 +9,9 @@ using EasyButtons;
 
 public class SpriteUpdater : MonoBehaviour
 {
-    [SerializeField] SeggFacesSO seggFaces;
+    [SerializeField] List<SeggFacesSO> seggFaces;
     List<GameObject> children;
+    int score;
 
     void Awake()
     {
@@ -21,10 +22,10 @@ public class SpriteUpdater : MonoBehaviour
 
     void OnEnable()
     {
+        score = GameObject.FindObjectOfType<Game>().score;
         SetAllFaces();
         ChangeSeggSprite(0);
     }
-
     void SetActiveAllChildren(Transform transform, bool value)  // TODO: MAKE INTO UTIL FUNCTION LATER!
     {
         foreach (Transform child in transform)
@@ -40,8 +41,10 @@ public class SpriteUpdater : MonoBehaviour
             Image femaleImg = mask.GetChild(0).GetComponent<Image>();
             Image maleImg = mask.GetChild(1).GetComponent<Image>();
 
-            femaleImg.sprite = seggFaces.femaleImg;
-            maleImg.sprite = seggFaces.maleImg;
+
+            print("BOUTA SET FACES... SCORE: " + score);
+            femaleImg.sprite = seggFaces[score].femaleImg;
+            maleImg.sprite = seggFaces[score].maleImg;
         }
     }
 

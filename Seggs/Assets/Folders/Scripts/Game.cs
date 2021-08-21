@@ -38,7 +38,7 @@ public class Game : MonoBehaviour
     {
         canvas = GameObject.Find("Canvas");
         scoreUI = GameObject.Find("Score").GetComponent<ScoreUI>();
-        //SpawnNewStage();
+        SpawnNewStage();
     }
 
     [Button]
@@ -106,7 +106,6 @@ public class Game : MonoBehaviour
         ++stage;
         DOVirtual.DelayedCall(curSeg.transitionSpeed * 0.5f, SpawnNewStage);    // TODO: replace with SpawnNewStage()
         UpdateHardness();
-        print(score);
     }
 
     void OnSeggsFailure()
@@ -118,8 +117,13 @@ public class Game : MonoBehaviour
     [Button]
     void UpdateHardness()
     {
+        if (score == 10 && stage == 2)  // Dining with Charli
+        {
+            hardnessFactor = .1f;
+            return;
+        }
         ++hardnessIterations;
         hardnessFactor = Mathf.Clamp(hardnessFactor * .97f, minHardness, 1);
-        print(hardnessIterations + " HARDNESS: " + hardnessFactor);
+        //print(hardnessIterations + " HARDNESS: " + hardnessFactor);
     }
 }

@@ -3,7 +3,8 @@ guid: ee24c6e847b901243850a1d7a4fb4936
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - qtePrefab: {fileID: 6381546161132517822, guid: fb4c0ce278a113b4c9378c6db456f145, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

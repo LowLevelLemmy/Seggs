@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 952606388562051088}
-  - component: {fileID: 952606388562051090}
+  - component: {fileID: -3616757536866041490}
   - component: {fileID: 952606388562051089}
   m_Layer: 0
   m_Name: Segg3
@@ -279,7 +279,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &952606388562051090
+--- !u!114 &-3616757536866041490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,11 +291,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699edb6f52ef7f645aafd6c3a6e9397b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preThrust: {fileID: 952606388773937342}
-  thrust: {fileID: 952606390138849057}
-  fail: {fileID: 952606388287951019}
-  thankYou: {fileID: 952606388303878736}
-  seggFaces: {fileID: 11400000, guid: 47aa4c4eb70119d4492c65e88039d774, type: 2}
+  seggFaces:
+  - {fileID: 11400000, guid: 47aa4c4eb70119d4492c65e88039d774, type: 2}
+  - {fileID: 11400000, guid: eeac924ef6960ad41b77131cd384f13f, type: 2}
+  - {fileID: 11400000, guid: 9247f761b89ac38458aaaa70d36c0a0c, type: 2}
+  - {fileID: 11400000, guid: a0d02ececa37847419ee865220b1be4a, type: 2}
+  - {fileID: 11400000, guid: 49aa4744d22739a4bb3e983700fc86ef, type: 2}
+  - {fileID: 11400000, guid: bdfc5f5aa84201243b8be5c2a74c6ada, type: 2}
+  - {fileID: 11400000, guid: d7e2459b0b3581a449016ef59704f979, type: 2}
+  - {fileID: 11400000, guid: 4d293d98dd4513f4f906ee71e980cddf, type: 2}
+  - {fileID: 11400000, guid: 7a81fdfb26a436c44bfea747fa6ce99d, type: 2}
+  - {fileID: 11400000, guid: 17007c1ad371cd243b06eb9940b25c5e, type: 2}
+  - {fileID: 11400000, guid: 510403b1c373e0e4aa8709686a52389c, type: 2}
 --- !u!114 &952606388562051089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,8 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e38f9190e8c9145aa714dd0235ccac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 1.5
-  spawnDelayMinMax: {x: 0.3, y: 0.7}
+  qteSpawnLoc: {x: 0, y: 0, z: 0}
   SeggsSuccess:
     m_PersistentCalls:
       m_Calls: []
