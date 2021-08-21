@@ -61,7 +61,7 @@ public class QTE : MonoBehaviour
             Fail();
         }
 
-        if (curDur <= 0)
+        if (curDur <= 0 && activated)
         {
             Fail();
         }

@@ -90,7 +90,9 @@ public class PhoneSeggs : MonoBehaviour, ISegg
 
     void SeggsFailed()
     {
-        print("FAILED");
+        if (done)
+            return;
+        print("PHONE FAILED");
         spriteUpdater.ChangeSeggSprite(6);
         Failure?.Invoke();
     }

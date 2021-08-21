@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelayMinMax: {x: 0.3, y: 0.7}
-  qteSpawnLoc: {x: -700, y: 316, z: 0}
+  qteSpawnLoc: {x: -29.73, y: 318, z: 0}
   SeggsSuccess:
     m_PersistentCalls:
       m_Calls: []
