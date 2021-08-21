@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using EasyButtons;
 
@@ -14,8 +15,9 @@ public class QTE : MonoBehaviour
     public UnityEvent OnWon;
     public UnityEvent OnFailed;
 
-
+    float curDur;
     InputManager inputManager;
+    Slider slider;
     GameObject arrow;
     bool activated = false;
 
@@ -23,7 +25,10 @@ public class QTE : MonoBehaviour
     {
         inputManager = GameObject.FindObjectOfType<InputManager>();
         arrow = GameObject.Find("Arrow");
+        slider = GetComponentInChildren<Slider>();
         correctDir = GetRandDir();
+
+        // make arrow a child of the slider bc we need to rotate the arrow differently from slider
     }
 
     Direction GetRandDir()
@@ -37,13 +42,14 @@ public class QTE : MonoBehaviour
         activated = true;
         arrow.transform.localScale = Vector3.one;
         PointArrow();
+        curDur = dur;
     }
 
     void Update()
     {
         if (!activated) return;
 
-        dur -= Time.deltaTime;
+        curDur -= Time.deltaTime;
 
         if (inputManager.curDirection == correctDir)
         {
@@ -54,10 +60,20 @@ public class QTE : MonoBehaviour
             Fail();
         }
 
-        if (dur <= 0)
+        if (curDur <= 0)
         {
             Fail();
         }
+
+        UpdateSlider();
+    }
+
+    void UpdateSlider()
+    {
+        float factor = 1 - (curDur / dur);
+        factor = Mathf.Clamp01(factor);
+
+        slider.value = (factor);
     }
 
     void PointArrow()
@@ -87,7 +103,7 @@ public class QTE : MonoBehaviour
 
     void Fail()
     {
-        print("LOST QTE");
+        //print("LOST QTE");
         OnFailed?.Invoke();
         arrow.transform.localScale = Vector3.zero;
         Destroy(gameObject);
@@ -95,7 +111,7 @@ public class QTE : MonoBehaviour
 
     void Win()
     {
-        print("WON QTE");
+        //print("WON QTE");
         OnWon?.Invoke();
         arrow.transform.localScale = Vector3.zero;
         Destroy(gameObject);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using System;
 
@@ -11,11 +12,11 @@ public class SpriteUpdater : MonoBehaviour
     [SerializeField] Sprite thankYou;
     [SerializeField] Sprite fail;
 
-    SpriteRenderer sr;
+    Image img;
 
     private void OnEnable()
     {
-        sr = GetComponent<SpriteRenderer>();
+        img = GetComponent<Image>();
         ChangeSeggSprite(0);
     }
 
@@ -30,16 +31,16 @@ public class SpriteUpdater : MonoBehaviour
         switch (i)
         {
             case 0:
-                sr.sprite = preThrust;
+                img.sprite = preThrust;
                 break;
             case 1:
-                sr.sprite = thrust;
+                img.sprite = thrust;
                 break;
             case 2:
-                sr.sprite = fail;
+                img.sprite = fail;
                 break;
             case 3:
-                sr.sprite = thankYou;
+                img.sprite = thankYou;
                 break;
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 // STRUCTURE:
 // Game == controlls all the seggs sequences
@@ -16,14 +17,14 @@ public class Game : MonoBehaviour
     void OnEnable()
     {
         spriteUpdater = GetComponent<SpriteUpdater>();
-        SpawnQTE();
+        DOVirtual.DelayedCall(2, SpawnQTE);
     }
 
     void SpawnQTE()
     {
-        float randDur = Random.Range(0.4f, 2.5f);
+        float randDur = Random.Range(0.4f, 1f);
 
-        QTE qteScript = Instantiate(qtePrefab).GetComponent<QTE>();
+        QTE qteScript = Instantiate(qtePrefab, GameObject.Find("Canvas").transform).GetComponent<QTE>();
         qteScript.OnWon.AddListener(OnQTEWon);
         qteScript.OnFailed.AddListener(OnQTEFail);
 
