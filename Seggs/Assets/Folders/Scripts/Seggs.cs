@@ -46,8 +46,14 @@ public class Seggs : MonoBehaviour
 
     void OnQTEFail()
     {
+        SeggsFailed();
+    }
+
+    void SeggsFailed()
+    {
         spriteUpdater.FailAnimation();
         SeggsFailure?.Invoke();
+        Destroy(gameObject, 1.0f);
     }
 
     void IncrementSeggStage()
