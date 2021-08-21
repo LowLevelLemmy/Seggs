@@ -45,6 +45,7 @@ public class SpriteUpdater : MonoBehaviour
         }
     }
 
+
     public void ChangeSeggSprite(int i)
     {
         SetActiveAllChildren(transform, false);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using EasyButtons;
+using System;
 
 // STRUCTURE:
 // Game == controlls all the seggs sequences
@@ -16,21 +17,23 @@ public class Game : MonoBehaviour
     int highScore;
 
     public GameObject seggsSequence;
+    public GameObject phoneSeggs;
 
     GameObject canvas;
-    Seggs curSeg;
+    ISegg curSeg;
 
     void OnEnable()
     {
         canvas = GameObject.Find("Canvas");
     }
 
+    [Button]
     void SpawnNewStage()    // replace SpawnSegg
     {
         switch (stage)
         {
             case 1:
-                // SpawnPhoneStage();
+                SpawnPhoneStage();
                 break;
             case 2:
                 SpawnSegg();
@@ -42,18 +45,24 @@ public class Game : MonoBehaviour
         }
     }
 
+    void SpawnPhoneStage()
+    {
+        curSeg = Instantiate(phoneSeggs, canvas.transform).GetComponent<ISegg>();
+        curSeg.GetSuccessEvent().AddListener(OnSeggsSuccess);
+    }
+
     [Button]
     void SpawnSegg()
     {
         curSeg = Instantiate(seggsSequence, canvas.transform).GetComponent<Seggs>();
-        curSeg.SeggsSuccess.AddListener(OnSeggsSuccess);
+        curSeg.GetSuccessEvent().AddListener(OnSeggsSuccess);
     }
 
     void OnSeggsSuccess()
     {
         ++score;
         ++stage;
-        DOVirtual.DelayedCall(curSeg.transitionSpeed * 0.5f, SpawnSegg);    // TODO: replace with SpawnNewStage()
+        DOVirtual.DelayedCall(curSeg.transitionSpeed * 0.5f, SpawnNewStage);    // TODO: replace with SpawnNewStage()
         print(score);
     }
 }

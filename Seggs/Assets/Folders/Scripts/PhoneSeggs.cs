@@ -4,21 +4,24 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 
-public class Seggs : MonoBehaviour, ISegg
+public class PhoneSeggs : MonoBehaviour, ISegg
 {
     // Settings:
     public float transitionSpeed { get; set; }
     public Vector2 spawnDelayMinMax;
+    public GameObject qtePrefab;
+    public Vector3 qtePos;
 
     // Events:
-    public UnityEvent SeggsSuccess;
-    public UnityEvent SeggsFailure;
+    public UnityEvent Failure;
+    public UnityEvent Success;
 
-    bool seggsDone = false;
-    int seggStage = 0;
-    public GameObject qtePrefab;
+    bool done = false;
+    int phoneStage = 0;
     SpriteUpdater spriteUpdater;
+    int curSprite = 0;
 
+    bool qteFlipper;
 
     void OnEnable()
     {
@@ -38,16 +41,46 @@ public class Seggs : MonoBehaviour, ISegg
 
         qteScript.dur = randDur;
         qteScript.StartQTE();
+
+        if (qteFlipper)
+        {
+            Vector3 qteFlippedPos = qtePos;
+            qteFlippedPos.x = -qtePos.x;
+            qteScript.transform.localPosition = qteFlippedPos;
+        }
+        else
+            qteScript.transform.localPosition = qtePos;
+        qteFlipper = !qteFlipper;
     }
 
     void OnQTEWon()
     {
-        IncrementSeggStage();
+        IncrementSprite();
+        IncrementPhoneStage();
 
-        if (seggsDone) return;
+        if (done) return;
         float randSpawnDelay = Random.Range(spawnDelayMinMax.x, spawnDelayMinMax.y);
         Invoke("SpawnQTE", randSpawnDelay);
-        ThrustAnimation();
+    }
+
+    void IncrementSprite()
+    {
+        ++curSprite;
+        spriteUpdater.ChangeSeggSprite(curSprite);
+    }
+
+    void IncrementPhoneStage()
+    {
+        ++phoneStage;
+        if (phoneStage >= 4)
+            PhoneEnd();
+    }
+
+    void PhoneEnd()
+    {
+        done = true;
+        Success?.Invoke();
+        DOVirtual.DelayedCall(0.5f, () => Transitioner.AnimateOut(transform, transitionSpeed));
     }
 
     void OnQTEFail()
@@ -57,60 +90,18 @@ public class Seggs : MonoBehaviour, ISegg
 
     void SeggsFailed()
     {
-        spriteUpdater.ChangeSeggSprite(2);
-        SeggsFailure?.Invoke();
-    }
-
-    void IncrementSeggStage()
-    {
-        ++seggStage;
-        switch (seggStage)
-        {
-            case 1:
-                print("BAM");
-                break;
-
-            case 2:
-                print("BAM");
-                break;
-
-            case 3:
-                ThankYou();
-                break;
-        }
-    }
-
-    void ThankYou()
-    {
-        print("Thank You Ma'am");
-        ThankAnimation();
-        seggsDone = true;
-        SeggsSuccess?.Invoke();
-        DOVirtual.DelayedCall(0.5f, () => Transitioner.AnimateOut(transform, transitionSpeed));
-    }
-
-    void ThrustAnimation()
-    {
-        spriteUpdater.ChangeSeggSprite(1);
-        DOVirtual.DelayedCall(0.15f, () => spriteUpdater.ChangeSeggSprite(0));
-    }
-    void FailAnimation()
-    {
-        spriteUpdater.ChangeSeggSprite(2);
-    }
-
-    void ThankAnimation()
-    {
-        spriteUpdater.ChangeSeggSprite(3);
+        print("FAILED");
+        spriteUpdater.ChangeSeggSprite(6);
+        Failure?.Invoke();
     }
 
     public UnityEvent GetSuccessEvent()
     {
-        return SeggsSuccess;
+        return Success;
     }
 
     public UnityEvent GetFailureEvent()
     {
-        return SeggsFailure;
+        return Failure;
     }
 }
