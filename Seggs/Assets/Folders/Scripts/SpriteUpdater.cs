@@ -41,8 +41,6 @@ public class SpriteUpdater : MonoBehaviour
             Image femaleImg = mask.GetChild(0).GetComponent<Image>();
             Image maleImg = mask.GetChild(1).GetComponent<Image>();
 
-
-            print("BOUTA SET FACES... SCORE: " + score);
             femaleImg.sprite = seggFaces[score].femaleImg;
             maleImg.sprite = seggFaces[score].maleImg;
         }
