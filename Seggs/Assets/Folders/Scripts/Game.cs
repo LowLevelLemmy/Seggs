@@ -17,7 +17,7 @@ public class Game : MonoBehaviour
     GameObject canvas;
     public GameObject seggsSequence;
 
-
+    Seggs curSeg;
 
     void OnEnable()
     {
@@ -27,6 +27,12 @@ public class Game : MonoBehaviour
     [Button]
     void SpawnSegg()
     {
-        Instantiate(seggsSequence, canvas.transform);
+        curSeg = Instantiate(seggsSequence, canvas.transform).GetComponent<Seggs>();
+        curSeg.SeggsSuccess.AddListener(OnSeggsSuccess);
+    }
+
+    void OnSeggsSuccess()
+    {
+        DOVirtual.DelayedCall(curSeg.transitionSpeed * 0.5f, SpawnSegg);
     }
 }

@@ -6,6 +6,9 @@ using DG.Tweening;
 
 public class Seggs : MonoBehaviour
 {
+    // Settings:
+    public float transitionSpeed = 1.5f;
+
     // Events:
     public UnityEvent SeggsSuccess;
     public UnityEvent SeggsFailure;
@@ -18,8 +21,9 @@ public class Seggs : MonoBehaviour
 
     void OnEnable()
     {
+        AnimateIn();
         spriteUpdater = GetComponent<SpriteUpdater>();
-        DOVirtual.DelayedCall(2, SpawnQTE);
+        DOVirtual.DelayedCall(transitionSpeed + 0.3f, SpawnQTE);
     }
 
     void SpawnQTE()
@@ -80,7 +84,18 @@ public class Seggs : MonoBehaviour
         print("Thank You Ma'am");
         spriteUpdater.ThankAnimation();
         seggsDone = true;
-        Destroy(gameObject, 1.0f);
-        DOVirtual.DelayedCall(1.0f, () => SeggsSuccess?.Invoke());
+        SeggsSuccess?.Invoke();
+        DOVirtual.DelayedCall(0.5f, AnimateOut);
+    }
+
+    void AnimateIn()
+    {
+        transform.localPosition = new Vector3(1920, 0, 0);
+        transform.DOLocalMoveX(0, transitionSpeed);
+    }
+
+    void AnimateOut()
+    {
+        transform.DOLocalMoveX(-1920, transitionSpeed).OnComplete(() => Destroy(gameObject));
     }
 }
