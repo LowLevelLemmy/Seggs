@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using EasyButtons;
 
 // STRUCTURE:
 // Game == controlls all the seggs sequences
@@ -10,62 +11,22 @@ using DG.Tweening;
 
 public class Game : MonoBehaviour
 {
-    bool seggsDone = false;
-    int seggStage = 0;
-    public GameObject qtePrefab;
-    SpriteUpdater spriteUpdater;
+    int score;
+    int highScore;
+
+    GameObject canvas;
+    public GameObject seggsSequence;
+
+
 
     void OnEnable()
     {
-        spriteUpdater = GetComponent<SpriteUpdater>();
-        DOVirtual.DelayedCall(2, SpawnQTE);
+        canvas = GameObject.Find("Canvas");
     }
 
-    void SpawnQTE()
+    [Button]
+    void SpawnSegg()
     {
-        float randDur = Random.Range(0.4f, 1f);
-
-        QTE qteScript = Instantiate(qtePrefab, GameObject.Find("Canvas").transform).GetComponent<QTE>();
-        qteScript.OnWon.AddListener(OnQTEWon);
-        qteScript.OnFailed.AddListener(OnQTEFail);
-
-        qteScript.dur = randDur;
-        qteScript.StartQTE();
-    }
-
-    void OnQTEWon()
-    {
-        IncrementSeggStage();
-
-        if (seggsDone) return;
-        float randSpawnDelay = Random.Range(0.5f, 1f);
-        Invoke("SpawnQTE", randSpawnDelay);
-        spriteUpdater.ThrustAnimation();
-    }
-
-    void OnQTEFail()
-    {
-        spriteUpdater.FailAnimation();
-    }
-
-    void IncrementSeggStage()
-    {
-        ++seggStage;
-        switch (seggStage)
-        {
-            case 1:
-                print("BAM");
-                break;
-
-            case 2:
-                print("BAM");
-                break;
-
-            case 3:
-                print("Thank You Ma'am");
-                spriteUpdater.ThankAnimation();
-                seggsDone = true;
-                break;
-        }
+        Instantiate(seggsSequence, canvas.transform);
     }
 }
