@@ -14,9 +14,9 @@ public class Game : MonoBehaviour
     int score;
     int highScore;
 
-    GameObject canvas;
     public GameObject seggsSequence;
 
+    GameObject canvas;
     Seggs curSeg;
 
     void OnEnable()
