@@ -12,8 +12,6 @@ public class SpriteUpdater : MonoBehaviour
     [SerializeField] SeggFacesSO seggFaces;
     List<GameObject> children;
 
-    Image img;
-
     void Awake()
     {
         children = new List<GameObject>();
@@ -47,25 +45,9 @@ public class SpriteUpdater : MonoBehaviour
         }
     }
 
-
-    void ChangeSeggSprite(int i)
+    public void ChangeSeggSprite(int i)
     {
         SetActiveAllChildren(transform, false);
         children[i].SetActive(true);
-    }
-
-    public void ThrustAnimation()
-    {
-        ChangeSeggSprite(1);
-        DOVirtual.DelayedCall(0.15f, () => ChangeSeggSprite(0));
-    }
-    public void FailAnimation()
-    {
-        ChangeSeggSprite(2);
-    }
-
-    public void ThankAnimation()
-    {
-        ChangeSeggSprite(3);
     }
 }

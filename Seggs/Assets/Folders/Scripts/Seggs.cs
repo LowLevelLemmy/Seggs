@@ -22,7 +22,7 @@ public class Seggs : MonoBehaviour
 
     void OnEnable()
     {
-        AnimateIn();
+        Transitioner.AnimateIn(transform, transitionSpeed);
         spriteUpdater = GetComponent<SpriteUpdater>();
         DOVirtual.DelayedCall(transitionSpeed + 0.15f, SpawnQTE);
     }
@@ -46,7 +46,7 @@ public class Seggs : MonoBehaviour
         if (seggsDone) return;
         float randSpawnDelay = Random.Range(spawnDelayMinMax.x, spawnDelayMinMax.y);
         Invoke("SpawnQTE", randSpawnDelay);
-        spriteUpdater.ThrustAnimation();
+        ThrustAnimation();
     }
 
     void OnQTEFail()
@@ -56,7 +56,7 @@ public class Seggs : MonoBehaviour
 
     void SeggsFailed()
     {
-        spriteUpdater.FailAnimation();
+        spriteUpdater.ChangeSeggSprite(2);
         SeggsFailure?.Invoke();
     }
 
@@ -82,20 +82,24 @@ public class Seggs : MonoBehaviour
     void ThankYou()
     {
         print("Thank You Ma'am");
-        spriteUpdater.ThankAnimation();
+        ThankAnimation();
         seggsDone = true;
         SeggsSuccess?.Invoke();
-        DOVirtual.DelayedCall(0.5f, AnimateOut);
+        DOVirtual.DelayedCall(0.5f, () => Transitioner.AnimateOut(transform, transitionSpeed));
     }
 
-    void AnimateIn()
+    void ThrustAnimation()
     {
-        transform.localPosition = new Vector3(1920, 0, 0);
-        transform.DOLocalMoveX(0, transitionSpeed);
+        spriteUpdater.ChangeSeggSprite(1);
+        DOVirtual.DelayedCall(0.15f, () => spriteUpdater.ChangeSeggSprite(0));
+    }
+    void FailAnimation()
+    {
+        spriteUpdater.ChangeSeggSprite(2);
     }
 
-    void AnimateOut()
+    void ThankAnimation()
     {
-        transform.DOLocalMoveX(-1920, transitionSpeed).OnComplete(() => Destroy(gameObject));
+        spriteUpdater.ChangeSeggSprite(3);
     }
 }
