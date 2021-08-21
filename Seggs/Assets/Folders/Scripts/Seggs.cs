@@ -8,7 +8,9 @@ public class Seggs : MonoBehaviour, ISegg
 {
     // Settings:
     public float transitionSpeed { get; set; }
-    public Vector2 spawnDelayMinMax;
+    public float spawnDelay { get; set; }
+    public float qteDur { get; set; }
+
     public Vector3 qteSpawnLoc;
 
     // Events:
@@ -21,9 +23,8 @@ public class Seggs : MonoBehaviour, ISegg
     SpriteUpdater spriteUpdater;
 
 
-    void OnEnable()
+    void Start()
     {
-        transitionSpeed = 1.5f;
         Transitioner.AnimateIn(transform, transitionSpeed);
         spriteUpdater = GetComponent<SpriteUpdater>();
         DOVirtual.DelayedCall(transitionSpeed + 0.15f, SpawnQTE);
@@ -31,13 +32,11 @@ public class Seggs : MonoBehaviour, ISegg
 
     void SpawnQTE()
     {
-        float randDur = Random.Range(0.4f, 1f);
-
         QTE qteScript = Instantiate(qtePrefab, GameObject.Find("Canvas").transform).GetComponent<QTE>();
         qteScript.OnWon.AddListener(OnQTEWon);
         qteScript.OnFailed.AddListener(OnQTEFail);
 
-        qteScript.dur = randDur;
+        qteScript.dur = qteDur;
         qteScript.StartQTE();
 
         if (qteSpawnLoc != Vector3.zero)
@@ -49,8 +48,7 @@ public class Seggs : MonoBehaviour, ISegg
         IncrementSeggStage();
 
         if (seggsDone) return;
-        float randSpawnDelay = Random.Range(spawnDelayMinMax.x, spawnDelayMinMax.y);
-        Invoke("SpawnQTE", randSpawnDelay);
+        Invoke("SpawnQTE", spawnDelay);
         ThrustAnimation();
     }
 
@@ -71,11 +69,9 @@ public class Seggs : MonoBehaviour, ISegg
         switch (seggStage)
         {
             case 1:
-                print("BAM");
                 break;
 
             case 2:
-                print("BAM");
                 break;
 
             case 3:
@@ -86,7 +82,6 @@ public class Seggs : MonoBehaviour, ISegg
 
     void ThankYou()
     {
-        print("Thank You Ma'am");
         ThankAnimation();
         seggsDone = true;
         SeggsSuccess?.Invoke();

@@ -28,11 +28,17 @@ public class Game : MonoBehaviour
     GameObject canvas;
     ISegg curSeg;
 
+    public float startingTransitionSpeed;
+    public Vector2 startingSpawnDelayMinMax;
+    public Vector2 startingQteDurMinMax;
+    [SerializeField] float hardnessFactor = 1.0f;
+    [SerializeField] float minHardness = 0.6f;
+
     void OnEnable()
     {
         canvas = GameObject.Find("Canvas");
         scoreUI = GameObject.Find("Score").GetComponent<ScoreUI>();
-        SpawnNewStage();
+        //SpawnNewStage();
     }
 
     [Button]
@@ -63,6 +69,11 @@ public class Game : MonoBehaviour
         curSeg = Instantiate(dinnerSeggs, canvas.transform).GetComponent<Seggs>();
         curSeg.GetSuccessEvent().AddListener(OnSeggsSuccess);
         curSeg.GetFailureEvent().AddListener(OnSeggsFailure);
+
+        // Settings:
+        curSeg.transitionSpeed = startingTransitionSpeed * hardnessFactor;
+        curSeg.spawnDelay = UnityEngine.Random.Range(startingSpawnDelayMinMax.x, startingSpawnDelayMinMax.y) * hardnessFactor;
+        curSeg.qteDur = UnityEngine.Random.Range(startingQteDurMinMax.x, startingQteDurMinMax.y) * hardnessFactor;
     }
 
     void SpawnPhoneStage()  // I can refactor these 3 functions so cleanly by passing an INT and using an array But it works so carry on
@@ -70,6 +81,11 @@ public class Game : MonoBehaviour
         curSeg = Instantiate(phoneSeggs, canvas.transform).GetComponent<ISegg>();
         curSeg.GetSuccessEvent().AddListener(OnSeggsSuccess);
         curSeg.GetFailureEvent().AddListener(OnSeggsFailure);
+
+        // Settings:
+        curSeg.transitionSpeed = startingTransitionSpeed * hardnessFactor;
+        curSeg.spawnDelay = UnityEngine.Random.Range(startingSpawnDelayMinMax.x, startingSpawnDelayMinMax.y) * hardnessFactor;
+        curSeg.qteDur = UnityEngine.Random.Range(startingQteDurMinMax.x, startingQteDurMinMax.y) * hardnessFactor;
     }
 
     [Button]
@@ -78,18 +94,32 @@ public class Game : MonoBehaviour
         curSeg = Instantiate(seggsSequence, canvas.transform).GetComponent<Seggs>();
         curSeg.GetSuccessEvent().AddListener(OnSeggsSuccess);
         curSeg.GetFailureEvent().AddListener(OnSeggsFailure);
+
+        // Settings:
+        curSeg.transitionSpeed = startingTransitionSpeed * hardnessFactor;
+        curSeg.spawnDelay = UnityEngine.Random.Range(startingSpawnDelayMinMax.x, startingSpawnDelayMinMax.y) * hardnessFactor;
+        curSeg.qteDur = UnityEngine.Random.Range(startingQteDurMinMax.x, startingQteDurMinMax.y) * hardnessFactor;
     }
 
     void OnSeggsSuccess()
     {
         ++stage;
-        scoreUI.UpdateScore(score);
         DOVirtual.DelayedCall(curSeg.transitionSpeed * 0.5f, SpawnNewStage);    // TODO: replace with SpawnNewStage()
+        UpdateHardness();
         print(score);
     }
 
     void OnSeggsFailure()
     {
-        Instantiate(failUIPrefab, canvas.transform);
+        DOVirtual.DelayedCall(.5f, () => Instantiate(failUIPrefab, canvas.transform));
+    }
+
+    int hardnessIterations = 0;
+    [Button]
+    void UpdateHardness()
+    {
+        ++hardnessIterations;
+        hardnessFactor = Mathf.Clamp(hardnessFactor * .97f, minHardness, 1);
+        print(hardnessIterations + " HARDNESS: " + hardnessFactor);
     }
 }

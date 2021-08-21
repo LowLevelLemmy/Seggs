@@ -8,5 +8,8 @@ public interface ISegg
     UnityEvent GetSuccessEvent();
     UnityEvent GetFailureEvent();
     float transitionSpeed { get; set; }
+    float spawnDelay { get; set; }
+    float qteDur { get; set; }
+
 
 }

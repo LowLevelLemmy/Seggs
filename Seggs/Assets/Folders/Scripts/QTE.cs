@@ -60,13 +60,16 @@ public class QTE : MonoBehaviour
         {
             Fail();
         }
+        UpdateSlider();
+    }
 
-        if (curDur <= 0 && activated)
+    void LateUpdate()
+    {
+        if (!activated) return;
+        if (curDur <= -0.05f )
         {
             Fail();
         }
-
-        UpdateSlider();
     }
 
     void UpdateSlider()

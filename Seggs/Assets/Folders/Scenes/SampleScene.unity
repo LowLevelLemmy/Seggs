@@ -218,6 +218,11 @@ MonoBehaviour:
   phoneSeggs: {fileID: 2882972126863171406, guid: 1702f3b2579a8674ba4fd7a6661ffa0b, type: 3}
   dinnerSeggs: {fileID: 1689148947472541105, guid: 61e3fae5ebf249d43a0a479cd259fd92, type: 3}
   failUIPrefab: {fileID: 1179990783720353237, guid: 6986287daaeddd24b91888b04142a000, type: 3}
+  startingTransitionSpeed: 1
+  startingSpawnDelayMinMax: {x: 0.5, y: 0.7}
+  startingQteDurMinMax: {x: 0.5, y: 0.7}
+  hardnessFactor: 1
+  minHardness: 0.6
 --- !u!114 &208485762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,7 +634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -152.05}
+  m_AnchoredPosition: {x: 186, y: -186}
   m_SizeDelta: {x: 200, y: 304.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781701836
@@ -674,7 +679,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 97690656
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2

@@ -8,7 +8,10 @@ public class PhoneSeggs : MonoBehaviour, ISegg
 {
     // Settings:
     public float transitionSpeed { get; set; }
-    public Vector2 spawnDelayMinMax;
+    public float spawnDelay { get; set; }
+    public float qteDur { get; set; }
+
+
     public GameObject qtePrefab;
     public Vector3 qtePos;
 
@@ -23,9 +26,8 @@ public class PhoneSeggs : MonoBehaviour, ISegg
 
     bool qteFlipper;
 
-    void OnEnable()
+    void Start()
     {
-        transitionSpeed = 1.5f;
         Transitioner.AnimateIn(transform, transitionSpeed);
         spriteUpdater = GetComponent<SpriteUpdater>();
         DOVirtual.DelayedCall(transitionSpeed + 0.15f, SpawnQTE);
@@ -33,13 +35,11 @@ public class PhoneSeggs : MonoBehaviour, ISegg
 
     void SpawnQTE()
     {
-        float randDur = Random.Range(0.4f, 1f);
-
         QTE qteScript = Instantiate(qtePrefab, GameObject.Find("Canvas").transform).GetComponent<QTE>();
         qteScript.OnWon.AddListener(OnQTEWon);
         qteScript.OnFailed.AddListener(OnQTEFail);
 
-        qteScript.dur = randDur;
+        qteScript.dur = qteDur;
         qteScript.StartQTE();
 
         if (qteFlipper)
@@ -59,8 +59,7 @@ public class PhoneSeggs : MonoBehaviour, ISegg
         IncrementPhoneStage();
 
         if (done) return;
-        float randSpawnDelay = Random.Range(spawnDelayMinMax.x, spawnDelayMinMax.y);
-        Invoke("SpawnQTE", randSpawnDelay);
+        Invoke("SpawnQTE", spawnDelay);
     }
 
     void IncrementSprite()
