@@ -24,7 +24,7 @@ public class Seggs : MonoBehaviour
     {
         AnimateIn();
         spriteUpdater = GetComponent<SpriteUpdater>();
-        DOVirtual.DelayedCall(transitionSpeed + 0.3f, SpawnQTE);
+        DOVirtual.DelayedCall(transitionSpeed + 0.15f, SpawnQTE);
     }
 
     void SpawnQTE()
@@ -58,7 +58,6 @@ public class Seggs : MonoBehaviour
     {
         spriteUpdater.FailAnimation();
         SeggsFailure?.Invoke();
-        Destroy(gameObject, 1.0f);
     }
 
     void IncrementSeggStage()

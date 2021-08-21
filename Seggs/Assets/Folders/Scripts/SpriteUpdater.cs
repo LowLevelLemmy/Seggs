@@ -6,29 +6,28 @@ using DG.Tweening;
 using System;
 using EasyButtons;
 
+
 public class SpriteUpdater : MonoBehaviour
 {
-    [SerializeField] GameObject preThrust;
-    [SerializeField] GameObject thrust;
-    [SerializeField] GameObject fail;
-    [SerializeField] GameObject thankYou;
-
     [SerializeField] SeggFacesSO seggFaces;
+    List<GameObject> children;
 
     Image img;
 
-    private void OnEnable()
+    void Awake()
     {
-        preThrust = transform.GetChild(0).gameObject;
-        thrust= transform.GetChild(1).gameObject;
-        fail = transform.GetChild(2).gameObject;
-        thankYou= transform.GetChild(3).gameObject;
+        children = new List<GameObject>();
+        foreach (Transform child in transform)  // get all children
+            children.Add(child.gameObject);
+    }
 
+    void OnEnable()
+    {
         SetAllFaces();
         ChangeSeggSprite(0);
     }
 
-    void SetActiveAllChildren(Transform transform, bool value)  // MAKE INTO UTIL FUNCTION LATER!
+    void SetActiveAllChildren(Transform transform, bool value)  // TODO: MAKE INTO UTIL FUNCTION LATER!
     {
         foreach (Transform child in transform)
             child.gameObject.SetActive(value);
@@ -52,21 +51,7 @@ public class SpriteUpdater : MonoBehaviour
     void ChangeSeggSprite(int i)
     {
         SetActiveAllChildren(transform, false);
-        switch (i)
-        {
-            case 0:
-                preThrust.SetActive(true);
-                break;
-            case 1:
-                thrust.SetActive(true);
-                break;
-            case 2:
-                fail.SetActive(true);
-                break;
-            case 3:
-                thankYou.SetActive(true);
-                break;
-        }
+        children[i].SetActive(true);
     }
 
     public void ThrustAnimation()
