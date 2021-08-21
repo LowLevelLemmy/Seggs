@@ -91,8 +91,7 @@ public class PhoneSeggs : MonoBehaviour, ISegg
     {
         if (done)
             return;
-        print("PHONE FAILED");
-        spriteUpdater.ChangeSeggSprite(6);
+        spriteUpdater.ChangeSeggSprite(5);
         Failure?.Invoke();
     }
 

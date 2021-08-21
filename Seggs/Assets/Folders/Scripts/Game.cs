@@ -13,7 +13,7 @@ using System;
 public class Game : MonoBehaviour
 {
     public int score = 0;
-    int stage = 1;
+    public int stage = 1;
     int highScore;
 
     public GameObject seggsSequence;

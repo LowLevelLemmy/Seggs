@@ -12,6 +12,7 @@ public class SpriteUpdater : MonoBehaviour
     [SerializeField] List<SeggFacesSO> seggFaces;
     List<GameObject> children;
     int score;
+    int stage;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class SpriteUpdater : MonoBehaviour
     void OnEnable()
     {
         score = GameObject.FindObjectOfType<Game>().score;
+        stage = GameObject.FindObjectOfType<Game>().stage;
         SetAllFaces();
         ChangeSeggSprite(0);
     }
@@ -38,6 +40,8 @@ public class SpriteUpdater : MonoBehaviour
         foreach (Transform seggAction in transform)
         {
             Transform mask = seggAction.GetChild(0);
+            if (stage == 1) // we on the phone segment
+                mask = mask.GetChild(0);
             Image femaleImg = mask.GetChild(0).GetComponent<Image>();
             Image maleImg = mask.GetChild(1).GetComponent<Image>();
 
