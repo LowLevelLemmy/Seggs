@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
 
     public GameObject seggsSequence;
     public GameObject phoneSeggs;
+    public GameObject dinnerSeggs;
 
     GameObject canvas;
     ISegg curSeg;
@@ -25,6 +26,7 @@ public class Game : MonoBehaviour
     void OnEnable()
     {
         canvas = GameObject.Find("Canvas");
+        SpawnNewStage();
     }
 
     [Button]
@@ -36,6 +38,9 @@ public class Game : MonoBehaviour
                 SpawnPhoneStage();
                 break;
             case 2:
+                SpawnDinner();
+                break;
+            case 3:
                 SpawnSegg();
                 break;
             default:
@@ -43,6 +48,12 @@ public class Game : MonoBehaviour
                 SpawnNewStage();
                 break;
         }
+    }
+
+    private void SpawnDinner()
+    {
+        curSeg = Instantiate(dinnerSeggs, canvas.transform).GetComponent<Seggs>();
+        curSeg.GetSuccessEvent().AddListener(OnSeggsSuccess);
     }
 
     void SpawnPhoneStage()

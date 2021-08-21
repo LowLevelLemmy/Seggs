@@ -9,6 +9,7 @@ public class Seggs : MonoBehaviour, ISegg
     // Settings:
     public float transitionSpeed { get; set; }
     public Vector2 spawnDelayMinMax;
+    public Vector3 qteSpawnLoc;
 
     // Events:
     public UnityEvent SeggsSuccess;
@@ -38,6 +39,9 @@ public class Seggs : MonoBehaviour, ISegg
 
         qteScript.dur = randDur;
         qteScript.StartQTE();
+
+        if (qteSpawnLoc != Vector3.zero)
+            qteScript.transform.localPosition = qteSpawnLoc;
     }
 
     void OnQTEWon()

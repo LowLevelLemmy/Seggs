@@ -39,6 +39,7 @@ public class QTE : MonoBehaviour
     [Button]
     public void StartQTE()
     {
+        AudioMan.instance.PlaySound(0, 1);
         activated = true;
         arrow.transform.localScale = Vector3.one;
         PointArrow();
@@ -106,6 +107,7 @@ public class QTE : MonoBehaviour
         //print("LOST QTE");
         OnFailed?.Invoke();
         arrow.transform.localScale = Vector3.zero;
+        AudioMan.instance.PlaySound(2, 1); //Fail Sound
         Destroy(gameObject);
     }
 
@@ -114,6 +116,7 @@ public class QTE : MonoBehaviour
         //print("WON QTE");
         OnWon?.Invoke();
         arrow.transform.localScale = Vector3.zero;
+        AudioMan.instance.PlaySound(1, 1);
         Destroy(gameObject);
     }
 }
