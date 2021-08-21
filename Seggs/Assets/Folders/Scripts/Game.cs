@@ -11,7 +11,8 @@ using EasyButtons;
 
 public class Game : MonoBehaviour
 {
-    int score;
+    int score = 0;
+    int stage = 1;
     int highScore;
 
     public GameObject seggsSequence;
@@ -24,6 +25,23 @@ public class Game : MonoBehaviour
         canvas = GameObject.Find("Canvas");
     }
 
+    void SpawnNewStage()    // replace SpawnSegg
+    {
+        switch (stage)
+        {
+            case 1:
+                // SpawnPhoneStage();
+                break;
+            case 2:
+                SpawnSegg();
+                break;
+            default:
+                stage = 1;
+                SpawnNewStage();
+                break;
+        }
+    }
+
     [Button]
     void SpawnSegg()
     {
@@ -33,6 +51,9 @@ public class Game : MonoBehaviour
 
     void OnSeggsSuccess()
     {
-        DOVirtual.DelayedCall(curSeg.transitionSpeed * 0.5f, SpawnSegg);
+        ++score;
+        ++stage;
+        DOVirtual.DelayedCall(curSeg.transitionSpeed * 0.5f, SpawnSegg);    // TODO: replace with SpawnNewStage()
+        print(score);
     }
 }

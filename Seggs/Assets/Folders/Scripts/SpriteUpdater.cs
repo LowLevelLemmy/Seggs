@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
+using EasyButtons;
 
 public class SpriteUpdater : MonoBehaviour
 {
+    [SerializeField] GameObject preThrust;
+    [SerializeField] GameObject thrust;
+    [SerializeField] GameObject fail;
+    [SerializeField] GameObject thankYou;
+
+    [SerializeField] SeggFacesSO seggFaces;
+
     Image img;
-
-    public GameObject preThrust;
-    public GameObject thrust;
-    public GameObject fail;
-    public GameObject thankYou;
-
 
     private void OnEnable()
     {
@@ -21,6 +23,8 @@ public class SpriteUpdater : MonoBehaviour
         thrust= transform.GetChild(1).gameObject;
         fail = transform.GetChild(2).gameObject;
         thankYou= transform.GetChild(3).gameObject;
+
+        SetAllFaces();
         ChangeSeggSprite(0);
     }
 
@@ -28,6 +32,20 @@ public class SpriteUpdater : MonoBehaviour
     {
         foreach (Transform child in transform)
             child.gameObject.SetActive(value);
+    }
+
+    [Button]
+    void SetAllFaces()  // MAKE INTO UTIL FUNCTION LATER!
+    {
+        foreach (Transform seggAction in transform)
+        {
+            Transform mask = seggAction.GetChild(0);
+            Image femaleImg = mask.GetChild(0).GetComponent<Image>();
+            Image maleImg = mask.GetChild(1).GetComponent<Image>();
+
+            femaleImg.sprite = seggFaces.femaleImg;
+            maleImg.sprite = seggFaces.maleImg;
+        }
     }
 
 

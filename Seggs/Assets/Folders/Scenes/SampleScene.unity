@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cf87d145004c844b2b811e062e016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seggsSequence: {fileID: 2837488576727566659, guid: d2ee83d1f1c84c641986fa2dfdd5c844, type: 3}
+  seggsSequence: {fileID: 952606388562051095, guid: de8239125dec656438300546e202b4d0, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

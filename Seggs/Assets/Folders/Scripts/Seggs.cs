@@ -8,6 +8,7 @@ public class Seggs : MonoBehaviour
 {
     // Settings:
     public float transitionSpeed = 1.5f;
+    public Vector2 spawnDelayMinMax;
 
     // Events:
     public UnityEvent SeggsSuccess;
@@ -43,7 +44,7 @@ public class Seggs : MonoBehaviour
         IncrementSeggStage();
 
         if (seggsDone) return;
-        float randSpawnDelay = Random.Range(0.5f, 1f);
+        float randSpawnDelay = Random.Range(spawnDelayMinMax.x, spawnDelayMinMax.y);
         Invoke("SpawnQTE", randSpawnDelay);
         spriteUpdater.ThrustAnimation();
     }
