@@ -10,6 +10,7 @@ using DG.Tweening;
 
 public class Game : MonoBehaviour
 {
+    bool seggsDone = false;
     int seggStage = 0;
     public GameObject qtePrefab;
     SpriteUpdater spriteUpdater;
@@ -34,11 +35,12 @@ public class Game : MonoBehaviour
 
     void OnQTEWon()
     {
+        IncrementSeggStage();
+
+        if (seggsDone) return;
         float randSpawnDelay = Random.Range(0.5f, 1f);
         Invoke("SpawnQTE", randSpawnDelay);
         spriteUpdater.ThrustAnimation();
-
-        IncrementSeggStage();
     }
 
     void OnQTEFail()
@@ -61,6 +63,8 @@ public class Game : MonoBehaviour
 
             case 3:
                 print("Thank You Ma'am");
+                spriteUpdater.ThankAnimation();
+                seggsDone = true;
                 break;
         }
     }

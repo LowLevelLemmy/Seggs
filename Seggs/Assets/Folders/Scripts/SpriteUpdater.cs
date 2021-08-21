@@ -46,4 +46,9 @@ public class SpriteUpdater : MonoBehaviour
     {
         ChangeSeggSprite(2);
     }
+
+    public void ThankAnimation()
+    {
+        ChangeSeggSprite(3);
+    }
 }
