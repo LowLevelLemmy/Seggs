@@ -7,10 +7,7 @@ using System;
 
 public class SpriteUpdater : MonoBehaviour
 {
-    [SerializeField] Sprite preThrust;
-    [SerializeField] Sprite thrust;
-    [SerializeField] Sprite thankYou;
-    [SerializeField] Sprite fail;
+    [SerializeField] SeggGraphicSO seggGraphic;
 
     Image img;
 
@@ -31,16 +28,16 @@ public class SpriteUpdater : MonoBehaviour
         switch (i)
         {
             case 0:
-                img.sprite = preThrust;
+                img.sprite = seggGraphic.preThrust;
                 break;
             case 1:
-                img.sprite = thrust;
+                img.sprite = seggGraphic.thrust;
                 break;
             case 2:
-                img.sprite = fail;
+                img.sprite = seggGraphic.fail;
                 break;
             case 3:
-                img.sprite = thankYou;
+                img.sprite = seggGraphic.thankYou;
                 break;
         }
     }

@@ -249,10 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699edb6f52ef7f645aafd6c3a6e9397b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preThrust: {fileID: 21300000, guid: a0ff36b3502cb434d96fa79d320c2f94, type: 3}
-  thrust: {fileID: 21300000, guid: 29802d2f48a6c1d4cabc0f632d8aab6a, type: 3}
-  thankYou: {fileID: 21300000, guid: 8b138a73d41485e49976ef5a9081fc02, type: 3}
-  fail: {fileID: 21300000, guid: f61cffa299f0b6047aaa0171173c8e4d, type: 3}
+  seggGraphic: {fileID: 11400000, guid: a70a136c3417c764bb5b3773127b1268, type: 2}
 --- !u!114 &748411144
 MonoBehaviour:
   m_ObjectHideFlags: 0
