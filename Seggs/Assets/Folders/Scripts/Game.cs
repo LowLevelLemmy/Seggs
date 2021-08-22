@@ -124,7 +124,7 @@ public class Game : MonoBehaviour
             return;
         }
         ++hardnessIterations;
-        hardnessFactor = Mathf.Clamp(hardnessFactor * .97f, minHardness, 1);
-        //print(hardnessIterations + " HARDNESS: " + hardnessFactor);
+        hardnessFactor = Mathf.Clamp(hardnessFactor * .98f, minHardness, 1);
+        print(hardnessIterations + " HARDNESS: " + hardnessFactor);
     }
 }
