@@ -22,6 +22,7 @@ public class Game : MonoBehaviour
 
     // UI
     public GameObject failUIPrefab;
+    public GameObject winUIPrefab;
     ScoreUI scoreUI;
 
 
@@ -111,8 +112,19 @@ public class Game : MonoBehaviour
 
     void OnSeggsFailure()
     {
-        DOVirtual.DelayedCall(.5f, () => Instantiate(failUIPrefab, canvas.transform));
+        if (score == 10 && stage > 1)
+        {
+            WinEntireGame();
+        }
+        else
+            DOVirtual.DelayedCall(.5f, () => Instantiate(failUIPrefab, canvas.transform));
     }
+
+    void WinEntireGame()
+    {
+        AudioMan.instance.PlaySound(4, 2f);
+        DOVirtual.DelayedCall(.5f, () => Instantiate(winUIPrefab, canvas.transform));
+    }    
 
     int hardnessIterations = 0;
     [Button]

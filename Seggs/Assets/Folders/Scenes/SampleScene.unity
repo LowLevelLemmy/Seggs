@@ -213,16 +213,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cf87d145004c844b2b811e062e016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 6
+  score: 10
   stage: 1
   seggsSequence: {fileID: 952606388562051095, guid: de8239125dec656438300546e202b4d0, type: 3}
   phoneSeggs: {fileID: 2882972126863171406, guid: 1702f3b2579a8674ba4fd7a6661ffa0b, type: 3}
   dinnerSeggs: {fileID: 1689148947472541105, guid: 61e3fae5ebf249d43a0a479cd259fd92, type: 3}
   failUIPrefab: {fileID: 1179990783720353237, guid: 6986287daaeddd24b91888b04142a000, type: 3}
+  winUIPrefab: {fileID: 5763605160521850035, guid: a459146a0464c674bb52993825c63a19, type: 3}
   startingTransitionSpeed: 1
   startingSpawnDelayMinMax: {x: 0.5, y: 0.7}
   startingQteDurMinMax: {x: 0.6, y: 0.8}
-  hardnessFactor: 0.6951356
+  hardnessFactor: 1
   minHardness: 0.6
 --- !u!114 &208485762
 MonoBehaviour:
@@ -241,6 +242,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 076e6ae096a3ce946a29d3c5801727ed, type: 3}
   - {fileID: 8300000, guid: 19b086c93f8d01d43b74c06fa9673b88, type: 3}
   - {fileID: 8300000, guid: d099b509fd7f8e44eb6eddf4221fabfb, type: 3}
+  - {fileID: 8300000, guid: 8626113c981980a40a16759cc17c30c2, type: 3}
 --- !u!82 &208485763
 AudioSource:
   m_ObjectHideFlags: 0
