@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e350df5dd56a9ce418b52a3eee9e4d9a, type: 3}
-  m_Name: Succ
+  m_Script: {fileID: 11500000, guid: 3c55653cf1bef194faa850918662e2e2, type: 3}
+  m_Name: Chica
   m_EditorClassIdentifier: 
-  contactName: Green thing
-  txts:
-  - Whatsup you wanna succ
-  - wtf
-  - fazebaer
-  lastImg: {fileID: 21300000, guid: adb801b2544b0e14eb9d9f3cb2e0d5d3, type: 3}
+  femaleName: 
+  maleName: 
+  femaleImg: {fileID: 21300000, guid: 720dc458b3b9ba943a0abaaff699f799, type: 3}
+  maleImg: {fileID: 21300000, guid: 4f5274f8ae8a10544b1d762cda936145, type: 3}
