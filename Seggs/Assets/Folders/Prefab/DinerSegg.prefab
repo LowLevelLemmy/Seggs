@@ -218,11 +218,11 @@ MonoBehaviour:
   seggFaces:
   - {fileID: 11400000, guid: 47aa4c4eb70119d4492c65e88039d774, type: 2}
   - {fileID: 11400000, guid: eeac924ef6960ad41b77131cd384f13f, type: 2}
+  - {fileID: 11400000, guid: 77031d3be358acd45a5edf52b666569b, type: 2}
   - {fileID: 11400000, guid: 9247f761b89ac38458aaaa70d36c0a0c, type: 2}
   - {fileID: 11400000, guid: a0d02ececa37847419ee865220b1be4a, type: 2}
-  - {fileID: 11400000, guid: 49aa4744d22739a4bb3e983700fc86ef, type: 2}
+  - {fileID: 11400000, guid: adcda4e93eeaa11438b76297f02324ea, type: 2}
   - {fileID: 11400000, guid: d7e2459b0b3581a449016ef59704f979, type: 2}
-  - {fileID: 11400000, guid: 4d293d98dd4513f4f906ee71e980cddf, type: 2}
   - {fileID: 11400000, guid: 7a81fdfb26a436c44bfea747fa6ce99d, type: 2}
   - {fileID: 11400000, guid: 75c364d57d5eda944867c0a200245b53, type: 2}
   - {fileID: 11400000, guid: 17007c1ad371cd243b06eb9940b25c5e, type: 2}

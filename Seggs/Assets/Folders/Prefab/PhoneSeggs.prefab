@@ -1966,11 +1966,11 @@ MonoBehaviour:
   seggFaces:
   - {fileID: 11400000, guid: 47aa4c4eb70119d4492c65e88039d774, type: 2}
   - {fileID: 11400000, guid: eeac924ef6960ad41b77131cd384f13f, type: 2}
+  - {fileID: 11400000, guid: 77031d3be358acd45a5edf52b666569b, type: 2}
   - {fileID: 11400000, guid: 9247f761b89ac38458aaaa70d36c0a0c, type: 2}
   - {fileID: 11400000, guid: a0d02ececa37847419ee865220b1be4a, type: 2}
-  - {fileID: 11400000, guid: 49aa4744d22739a4bb3e983700fc86ef, type: 2}
+  - {fileID: 11400000, guid: adcda4e93eeaa11438b76297f02324ea, type: 2}
   - {fileID: 11400000, guid: d7e2459b0b3581a449016ef59704f979, type: 2}
-  - {fileID: 11400000, guid: 4d293d98dd4513f4f906ee71e980cddf, type: 2}
   - {fileID: 11400000, guid: 7a81fdfb26a436c44bfea747fa6ce99d, type: 2}
   - {fileID: 11400000, guid: 75c364d57d5eda944867c0a200245b53, type: 2}
   - {fileID: 11400000, guid: 17007c1ad371cd243b06eb9940b25c5e, type: 2}
@@ -2010,11 +2010,11 @@ MonoBehaviour:
   txts:
   - {fileID: 11400000, guid: 2447cc436bc074e4d9909a37e57e9ddc, type: 2}
   - {fileID: 11400000, guid: 2fe283c6a97747e4689aba118660de09, type: 2}
-  - {fileID: 11400000, guid: c6882ac5db1c21147992cc2990aa0611, type: 2}
+  - {fileID: 11400000, guid: 07c6d4e88fc2df0499c125f7e3447e47, type: 2}
   - {fileID: 11400000, guid: fb9021ae56df7dc4db447a92c4a6e9a3, type: 2}
   - {fileID: 11400000, guid: b7d975ed27a348541aa413ac499216c5, type: 2}
+  - {fileID: 11400000, guid: f129178f644ee1849a80b3c882ddc0fd, type: 2}
   - {fileID: 11400000, guid: d74d8631d4dc1a54bacd1cd0eb3a6662, type: 2}
-  - {fileID: 11400000, guid: e74ea2b8c6aacf5479c594aa0e2a53b9, type: 2}
   - {fileID: 11400000, guid: 311715206f98efe46b3009f50815cda3, type: 2}
   - {fileID: 11400000, guid: 01efb88b1ae70a748b11892bd97c24c4, type: 2}
   - {fileID: 11400000, guid: 34df26c9728f14444af7240a2df02f72, type: 2}
