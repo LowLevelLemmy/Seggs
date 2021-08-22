@@ -18,7 +18,7 @@ public class IphoneClock : MonoBehaviour
     string GetTimeStr()
     {
         DateTime now = DateTime.Now;
-        string time = String.Format("{0:h:m}", now);
+        string time = String.Format("{0:h:mm}", now);
         return time;
     }
 }

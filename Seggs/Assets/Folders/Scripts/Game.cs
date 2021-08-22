@@ -41,7 +41,6 @@ public class Game : MonoBehaviour
         SpawnNewStage();
     }
 
-    [Button]
     void SpawnNewStage()    // replace SpawnSegg
     {
         switch (stage)
@@ -103,6 +102,8 @@ public class Game : MonoBehaviour
 
     void OnSeggsSuccess()
     {
+        if (stage == 3)
+            AudioMan.instance.PlaySound(3, .8f);
         ++stage;
         DOVirtual.DelayedCall(curSeg.transitionSpeed * 0.5f, SpawnNewStage);    // TODO: replace with SpawnNewStage()
         UpdateHardness();
