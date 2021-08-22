@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e350df5dd56a9ce418b52a3eee9e4d9a, type: 3}
+  m_Name: LLLRIP
+  m_EditorClassIdentifier: 
+  contactName: LLL.RIP
+  txts:
+  - U know LLL.RIP is the place to be?
+  - y
+  - Cuz it has my links... go out with me
+  lastImg: {fileID: 21300000, guid: e71ad9e64e26f2544bde7635eede0586, type: 3}

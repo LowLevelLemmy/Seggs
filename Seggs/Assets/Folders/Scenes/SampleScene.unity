@@ -213,7 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cf87d145004c844b2b811e062e016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 5
+  score: 0
+  stage: 1
   seggsSequence: {fileID: 952606388562051095, guid: de8239125dec656438300546e202b4d0, type: 3}
   phoneSeggs: {fileID: 2882972126863171406, guid: 1702f3b2579a8674ba4fd7a6661ffa0b, type: 3}
   dinnerSeggs: {fileID: 1689148947472541105, guid: 61e3fae5ebf249d43a0a479cd259fd92, type: 3}
